@@ -11,7 +11,6 @@ and tools that are used in weekly problem sets.
 }
 \section{CLPS0900R functions}{
 
-demo_hist(x)		#a simple histogram using default settings
-demo_nhst()		#a demonstration of 2-sample inference
+Function list...
 }
 

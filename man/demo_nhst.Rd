@@ -5,7 +5,7 @@
 \title{Demonstration of 2-sample inference}
 \usage{
 demo_nhst(demo.type = 1, nreps = 100, sleep.sec = 0.2,
-  add.diff = 3.75, show.ttest = T)
+  add.diff = 3.75, show.ttest = F)
 }
 \arguments{
 \item{demo.type}{a number (1=show actual groups 2=run random shuffling)}

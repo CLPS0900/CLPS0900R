@@ -5,6 +5,9 @@
 #' asks you to judge the difference between the means for two treatment groups.
 #' The second part of the demonstration illustrates the results we obtain
 #' when the data are randomly shuffled over the two groups.
+#' Note: On some platforms, the plot region may need to be initialized before
+#' running the app.  This can be done with:
+#' plot(1)
 #'
 #' @param demo.type a number (1=show actual groups 2=run random shuffling)
 #' @param nreps a number (10-100) that controls number of replications
@@ -19,15 +22,14 @@
 #' demo_nhst(demo.type=2) #shows simulation of random shuffling
 #'
 #' @export
-demo_nhst <- function(demo.type=1,nreps=100,sleep.sec=.3,add.diff=3.75,show.ttest=F){
+demo_nhst <- function(demo.type=1,nreps=100,sleep.sec=.2,add.diff=3.75,show.ttest=T){
 
   add.line <- T
   opt <- c("Show data for 2 actual groups","Run simulation of random shuffling")
-  #demo.type <- menu(choices=opt,graphics=FALSE,title="Select type of demonstration: ")
 
   #get seed sample
 
-  set.seed(5)
+  set.seed(9)
   x1 <- rnorm(100,100,10)
   x2 <- rnorm(100,100,10)
   x <- c(x1,x2)
@@ -37,8 +39,6 @@ demo_nhst <- function(demo.type=1,nreps=100,sleep.sec=.3,add.diff=3.75,show.ttes
     readline("Hit enter to view the actual data for the 2 treatment groups...")
   }
 
-  mean1 <- rep(NA,nreps)
-  mean2 <- mean1
   mean.diffs <- rep(NA,nreps)
 
   #define difference for ttest purposes
@@ -51,28 +51,29 @@ demo_nhst <- function(demo.type=1,nreps=100,sleep.sec=.3,add.diff=3.75,show.ttes
 
   obs.diff <- mean(x2) - mean(x1)
 
-  #create 2 sets of y values to be used for plotting
-
-  ycor1 <- rnorm(100,10,2) #group 1
-  ycor2 <- rnorm(100,22,2) #group 2
-  y <- c(ycor1,ycor2)
-
   group.tags <- c(rep(1,100),rep(2,100))
 
-  for(repnum in 1:nreps){
+   for(repnum in 1:nreps){
 
-   #shuffle the groups
+     #create 2 sets of y values to be used for plotting
 
-   if(demo.type==2){
-     group.tags2 <- sample(group.tags,200,replace=F)
-     x1 <- x[group.tags2==1]
-     x2 <- x[group.tags2==2]
-   }
+     ycor1 <- rnorm(100,8,2) #group 1
+     ycor2 <- rnorm(100,23,2) #group 2
+     y <- c(ycor1,ycor2)
+
+    #shuffle the groups
+
+    if(demo.type==2){
+      group.tags2 <- sample(group.tags,200,replace=F)
+      x1 <- x[group.tags2==1]
+      x2 <- x[group.tags2==2]
+    }
 
    plot(x,y,yaxt="n",xlab="Memory Performance",main="Dotchart of Memory Performance",
-       pch=19,xaxt="n",ylab="Group",type="n")
+       pch=19,xaxt="n",ylab="Group",type="n",ylim=c(0,30))
 
    par(cex=1.4)
+
    points(x1,ycor1,pch=19,col="red",cex=1)
    points(x2,ycor2,pch=15,col="blue",cex=1)
 
@@ -122,7 +123,7 @@ demo_nhst <- function(demo.type=1,nreps=100,sleep.sec=.3,add.diff=3.75,show.ttes
    #get fraction of outcomes >= the observed diff
 
    xx <- mean.diffs[mean.diffs >= obs.diff]
-   prop.exceed <- (length(xx)/length(x))
+   prop.exceed <- length(xx)/nreps
    prop.exceed <- round(prop.exceed,4)
 
    cat("\nHit enter to show proportion of trials in which random shuffling produced")

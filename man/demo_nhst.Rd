@@ -4,8 +4,8 @@
 \alias{demo_nhst}
 \title{Demonstration of 2-sample inference}
 \usage{
-demo_nhst(demo.type = 1, nreps = 100, sleep.sec = 0.3,
-  add.diff = 3.75, show.ttest = F)
+demo_nhst(demo.type = 1, nreps = 100, sleep.sec = 0.2,
+  add.diff = 3.75, show.ttest = T)
 }
 \arguments{
 \item{demo.type}{a number (1=show actual groups 2=run random shuffling)}
@@ -27,6 +27,9 @@ as presented in class.  As shown in class, one part of the demonstration
 asks you to judge the difference between the means for two treatment groups.
 The second part of the demonstration illustrates the results we obtain
 when the data are randomly shuffled over the two groups.
+Note: On some platforms, the plot region may need to be initialized before
+running the app.  This can be done with:
+plot(1)
 }
 \examples{
 demo_nhst(demo.type=1) #shows actual observations for 2 groups

@@ -1,7 +1,7 @@
 #' Illustration of histogram
 #'
 #' Creates a histogram of using default R settings.  This function is used only to test
-#' package installation using Rstudio.
+#' package installation.
 #'
 #' @param x numeric data
 #'

@@ -7,5 +7,11 @@
 \title{CLPS0900R: Utilities for Quantitative Methods course.}
 \description{
 The package includes demonstrations in R that are presented in class,
-and tools that are used in weekly problem sets.
+tools that are used in weekly problem sets, and associated data sets.
+}
+\details{
+\describe{
+  \item{demo_hist()}{A simple histogram}
+  \item{demo_nhst()}{A simulation of 2-sample comparisons}
+}
 }

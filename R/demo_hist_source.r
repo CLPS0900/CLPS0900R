@@ -12,5 +12,5 @@
 #'
 #' @export
 demo_hist <- function(x=sunspots){
-  hist(x)
+  hist(x,main="Histogram of Sunspots")
 }

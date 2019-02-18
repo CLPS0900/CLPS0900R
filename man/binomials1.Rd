@@ -37,8 +37,6 @@ None
 Demonstration of binomial distributions
 }
 \examples{
-\dontrun{
-binomials()
-}
+binomials1()
 
 }

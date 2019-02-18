@@ -13,5 +13,7 @@ tools that are used in weekly problem sets, and associated data sets.
 \describe{
   \item{demo_hist()}{A simple histogram}
   \item{demo_nhst()}{A simulation of 2-sample comparisons}
+  \item{sdpop(x)}{Returns sigma for an assumed population of values}
+  \item{binomials1()}{Shows binomial distribution}
 }
 }

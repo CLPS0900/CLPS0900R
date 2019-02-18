@@ -3,4 +3,5 @@
 export(binomials1)
 export(demo_hist)
 export(demo_nhst)
+export(run.binomials1)
 export(sdpop)

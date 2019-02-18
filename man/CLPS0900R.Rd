@@ -15,5 +15,6 @@ tools that are used in weekly problem sets, and associated data sets.
   \item{demo_nhst()}{A simulation of 2-sample comparisons}
   \item{sdpop(x)}{Returns sigma for an assumed population of values}
   \item{binomials1()}{Shows binomial distribution}
+  \item{run.binomials1()}{Run binomial demonstration with manipulate wrapper}
 }
 }

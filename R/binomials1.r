@@ -14,7 +14,9 @@
 #' @return None
 #'
 #' @examples
+#' \dontrun{
 #' binomials()
+#' }
 #'
 #' @export
 binomials1 <- function(n=5,p=.5,x.axis.type="Gaussian",y.axis.type="Full Range",plot.type="Counts",add.normal=FALSE,

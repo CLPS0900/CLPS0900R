@@ -2,3 +2,4 @@
 
 export(demo_hist)
 export(demo_nhst)
+export(sdpop)

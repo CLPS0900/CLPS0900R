@@ -48,7 +48,11 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]"){
     x <- x + abs(min(x))
   }
   if(pop.type=="Custom"){
-    x <- c(1,2,2,3,3,3,4,4,5,10,11,12)
+    #x <- c(1,2,2,3,3,3,4,4,5,10,11,12)
+    if(exists("test.data")==FALSE){
+      cat("\nError: You must put the values to be treated as the population in a variable named test.data.\n\n")
+    }
+    x <- test.data
   }
 
   nsamp <- 2500

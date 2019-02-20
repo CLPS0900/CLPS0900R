@@ -33,11 +33,11 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
   if(pop.type=="Binomial"){
     x <- c(0,1)
   }
-  if(pop.type=="Normal"){
+  if(pop.type=="WAIS IQ"){
     mu.pop <- 100; sd.pop <- 15
     x <- rnorm(10000,mu.pop,sd.pop)
   }
-  if(pop.type=="Bimodal"){
+  if(pop.type=="Old Faithful"){
     mean1 <- 60
     mean2 <- 140
     sd.pop <- 15
@@ -45,10 +45,15 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
     x2 <- rnorm(5000,mean2,sd.pop)
     x <- c(x1,x2)
     mu.pop <- mean(c(mean1,mean2))
+
+    x <- faithful$eruptions
+    mu.pop <- mean(x)
+
   }
-  if(pop.type=="Skewed"){
+  if(pop.type=="Sunspot Activity"){
     x <- scale(sunspots^2)*15
     x <- x + abs(min(x))
+    x <- sunspots
   }
 
   if(pop.type=="World IPP"){

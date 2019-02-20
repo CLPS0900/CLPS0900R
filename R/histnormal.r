@@ -10,14 +10,16 @@
 #'
 #' @examples
 #' histnormal()
+#' histnormal(sunspots)
+#' histnormal(sunspots,plot.points=TRUE,plot.quantile=TRUE)
 #'
 #' @export
-histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=F,plot.quantile=F){
+histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=FALSE,plot.quantile=FALSE){
 
   #create histogram of x and superimpose
   #normal distribution at mean(x) with sd(x)
 
-  if(plot.quantile==T){
+  if(plot.quantile==TRUE){
     par(mfrow=c(1,2))
   }
 
@@ -32,7 +34,7 @@ histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=F,plot.quant
     s <- sigma
   }
 
-  curve(dnorm(x,mean=m,sd=s),col="red",lwd=2,add=T)
+  curve(dnorm(x,mean=m,sd=s),col="red",lwd=2,add=TRUE)
 
   #extract densities at specified points for x
 
@@ -41,11 +43,11 @@ histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=F,plot.quant
 
   dout <- dnorm(q,mean=m,sd=s)
 
-  if(plot.points==T){
+  if(plot.points==TRUE){
    points(q,dout,pch=19,col="black")
   }
 
-  if(plot.quantile==T){
+  if(plot.quantile==TRUE){
     qqnorm(x,main="Normal Quantile Plot")
     qqline(x,col="red",lwd=2)
   }

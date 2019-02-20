@@ -5,7 +5,7 @@
 \title{Plot a density histogram with a normal distribution superimposed}
 \usage{
 histnormal(x = rnorm(1000), mu = NULL, sigma = NULL,
-  plot.points = F, plot.quantile = F)
+  plot.points = FALSE, plot.quantile = FALSE)
 }
 \arguments{
 \item{x}{#The data to be plotted}
@@ -26,5 +26,7 @@ Plot a density histogram with a normal distribution superimposed
 }
 \examples{
 histnormal()
+histnormal(sunspots)
+histnormal(sunspots,plot.points=TRUE,plot.quantile=TRUE)
 
 }

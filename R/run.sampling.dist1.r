@@ -21,8 +21,8 @@ run.sampling.dist1 <- function() {
                         pop.type=pop.type,
                         add.normal=add.normal),
              ssize=slider(1,100,step=1,initial=1,label="Sample Size (N)"),
-             pop.type=picker("Uniform[1-6]","Uniform[1-10]","Binomial","Normal (IQ)",
-                             "Skewed","Bimodal","World IPP","US Violent Crime",
+             pop.type=picker("Uniform[1-6]","Uniform[1-10]","Binomial","WAIS IQ",
+                             "Sunspot Activity","Old Faithful","World IPP","US Violent Crime",
                              "Custom",label="Population Type"),
              add.normal=checkbox(label="Add Normal Distribution")
   )

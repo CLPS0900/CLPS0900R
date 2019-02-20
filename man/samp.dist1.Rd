@@ -4,12 +4,14 @@
 \alias{samp.dist1}
 \title{Demonstration of sampling distribution of the mean}
 \usage{
-samp.dist1(ssize = 5, pop.type = "Uniform[1-10]")
+samp.dist1(ssize = 5, pop.type = "Uniform[1-10]", add.normal = TRUE)
 }
 \arguments{
 \item{ssize}{An integer for the size of the sample}
 
 \item{pop.type}{Controls the type of population from which samples are drawn}
+
+\item{add.normal}{#controls whether normal distribution is superimposed}
 }
 \value{
 None

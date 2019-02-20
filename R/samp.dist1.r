@@ -2,6 +2,7 @@
 #'
 #' @param ssize An integer for the size of the sample
 #' @param pop.type Controls the type of population from which samples are drawn
+#' @param add.normal #controls whether normal distribution is superimposed
 #'
 #' @return None
 #'
@@ -9,17 +10,17 @@
 #' samp.dist1()
 #'
 #' @export
-samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]"){
+samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
 
   #################################################################
   #sampling distributions of the mean
   #################################################################
 
+  #cosmetics
+
   lwd.setting <- 3
   font.size3 <- 1.25
   font.size5 <- 1.25
-  mean1 <- 60
-  mean2 <- 140
 
   #define populations
 
@@ -37,6 +38,8 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]"){
     x <- rnorm(10000,mu.pop,sd.pop)
   }
   if(pop.type=="Bimodal"){
+    mean1 <- 60
+    mean2 <- 140
     sd.pop <- 15
     x1 <- rnorm(5000,mean1,sd.pop)
     x2 <- rnorm(5000,mean2,sd.pop)
@@ -47,8 +50,15 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]"){
     x <- scale(sunspots^2)*15
     x <- x + abs(min(x))
   }
+
+  if(pop.type=="World IPP"){
+    x <- WHO_DATA$IPP
+  }
+  if(pop.type=="US Violent Crime"){
+    x <- states_data$violent.crime
+  }
+
   if(pop.type=="Custom"){
-    #x <- c(1,2,2,3,3,3,4,4,5,10,11,12)
     if(exists("test.data")==FALSE){
       cat("\nError: You must put the values to be treated as the population in a variable named test.data.\n\n")
     }
@@ -126,7 +136,9 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]"){
        xlim = xlimits, nclass = nct, yaxt = "n",col="tan")
   mtext(main.text,line=1,cex=font.size5)
 
-  lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
+  if(add.normal==TRUE){
+   lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
+  }
 
   ###################################
   #again, using fixed xlimits
@@ -137,11 +149,14 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]"){
         probability = T, xlim = xlimits, nclass = nct, yaxt = "n",col="tan")
    mtext(main.text,line=1,cex=font.size5)
 
-  lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
+   if(add.normal==TRUE){
+    lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
+   }
 
   ###################################
   #show qqplot
 
   qout <- qqnorm(smeans,main="Normal Quantile Plot",xlab="Expected Z Scores",ylab="Observed Values")
+  qqline(smeans,col="red",lwd=2)
 
 }

@@ -3,6 +3,7 @@
 export(binomials1)
 export(demo_hist)
 export(demo_nhst)
+export(histnormal)
 export(run.binomials1)
 export(run.sampling.dist1)
 export(samp.dist1)

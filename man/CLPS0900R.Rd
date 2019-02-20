@@ -18,5 +18,6 @@ tools that are used in weekly problem sets, and associated data sets.
   \item{run.binomials1()}{Run binomial demonstration with manipulate wrapper}
   \item{samp.dist1()}{Show a sampling distribution of the mean}
   \item{run.sampling.dist1()}{Run sampling distribution with manipulate wrapper}
+  \item{histnormal()}{Create density histogram with normal superimposed}
 }
 }

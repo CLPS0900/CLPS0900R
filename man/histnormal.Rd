@@ -4,8 +4,9 @@
 \alias{histnormal}
 \title{Plot a density histogram with a normal distribution superimposed}
 \usage{
-histnormal(x = rnorm(1000), mu = NULL, sigma = NULL,
-  plot.points = FALSE, plot.quantile = FALSE)
+histnormal(x = rnorm(2000), mu = NULL, sigma = NULL,
+  plot.points = FALSE, plot.quantile = FALSE, plot.curve = FALSE,
+  ran.seed = 4)
 }
 \arguments{
 \item{x}{#The data to be plotted}
@@ -17,6 +18,10 @@ histnormal(x = rnorm(1000), mu = NULL, sigma = NULL,
 \item{plot.points}{#Should heights for select points be plotted?}
 
 \item{plot.quantile}{#Should a normal quantile plot be included?}
+
+\item{plot.curve}{#Should normal function be superimposed?}
+
+\item{ran.seed}{#Seed value to allow replication of specific sample}
 }
 \value{
 A data frame consisting of selected quantiles and their heights

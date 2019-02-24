@@ -5,6 +5,8 @@
 #' @param sigma #The assumed true value for the population sd
 #' @param plot.points #Should heights for select points be plotted?
 #' @param plot.quantile #Should a normal quantile plot be included?
+#' @param plot.curve #Should normal function be superimposed?
+#' @param ran.seed  #Seed value to allow replication of specific sample
 #'
 #' @return A data frame consisting of selected quantiles and their heights
 #'
@@ -14,7 +16,8 @@
 #' histnormal(sunspots,plot.points=TRUE,plot.quantile=TRUE)
 #'
 #' @export
-histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=FALSE,plot.quantile=FALSE){
+histnormal <- function(x=rnorm(2000),mu=NULL,sigma=NULL,plot.points=FALSE,plot.quantile=FALSE,
+                       plot.curve=FALSE,ran.seed=4){
 
   #create histogram of x and superimpose
   #normal distribution at mean(x) with sd(x)
@@ -22,8 +25,13 @@ histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=FALSE,plot.q
   if(plot.quantile==TRUE){
     par(mfrow=c(1,2))
   }
+  else {
+    par(mfrow=c(1,1))
+  }
 
-  hist(x,col="tan",prob=T,main="Histogram + Normal")  #use density scale to facilitate plotting of normal curve
+  set.seed(ran.seed)
+
+  hist(x,col="tan",prob=T,main="Histogram")  #use density scale to facilitate plotting of normal curve
 
   if(is.null(mu)){
    m <- mean(x)
@@ -34,7 +42,10 @@ histnormal <- function(x=rnorm(1000),mu=NULL,sigma=NULL,plot.points=FALSE,plot.q
     s <- sigma
   }
 
-  curve(dnorm(x,mean=m,sd=s),col="red",lwd=2,add=TRUE)
+
+  if(plot.curve==TRUE){
+    curve(dnorm(x,mean=m,sd=s),col="red",lwd=2,add=TRUE)
+  }
 
   #extract densities at specified points for x
 

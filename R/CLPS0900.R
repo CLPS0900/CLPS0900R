@@ -8,7 +8,7 @@
 #'
 #' demo_nhst()  A simulation of 2-sample comparisons
 #'
-#' sdpop(x)  Returns sigma for an assumed population of values
+#' sdpop()  Returns sigma for an assumed population of values
 #'
 #' binomials1()  Shows binomial distribution
 #'

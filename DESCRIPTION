@@ -7,7 +7,13 @@ Authors@R:
            role = c("aut", "cre"),
            email = "clps0900.spring.2019@gmail.com")
 Description: Demonstrations and utilities for use by students in CLPS0900.
-Depends: R (>= 2.10)
+Depends: 
+  R (>= 2.10),
+Imports:
+  devtools,
+  manipulate,
+  mosaic,
+  psych
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true

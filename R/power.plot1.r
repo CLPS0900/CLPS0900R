@@ -8,6 +8,7 @@
 #' @param xcors The 4 quantiles that delimit the areas of interest
 #' @param alt.hyp One of: "mu1<>mu0", "mu1<mu0", or "mu1>mu0"
 #' @param shade.colors colors for the regions of interest
+#' @param show.values Select whether Type I, II, and Power are displayed in plot.
 #'
 #' @return
 #' pow Probability of correct rejection (For plot.type="Ha")
@@ -19,7 +20,8 @@
 power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
                         xcors=c(56,59,61,65),
                         alt.hyp="mu1<mu0",
-                        shade.colors=c("darkgoldenrod1","cornsilk","darkgoldenrod1")){
+                        shade.colors=c("darkgoldenrod1","cornsilk","darkgoldenrod1"),
+                        show.values=FALSE){
 
   xlo <- xlimits[1]
   xhi <- xlimits[2]
@@ -28,6 +30,8 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
     alpha <- round(alpha,3)
     main.text<- paste(plot.type,"(alpha=",alpha,")")
     pow <- NULL
+    plot.val1 <- (1-alpha) #paste("1-alpha:",(1- alpha))
+    plot.val2 <- alpha #paste("alpha:",alpha)
   }
 
   if(plot.type=="Ha"){
@@ -42,6 +46,10 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
 
    main.text <- paste(plot.type,"(Power=",pow,")")
 
+   plot.val1 <- 1-pow
+   plot.val2 <- pow
+
+
   }
 
   if(alt.hyp=="mu1<mu0"){
@@ -55,7 +63,8 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
   }
 
   X <- seq(xlo,xhi,.01)
-  plot(X,dnorm(X,mean=mu,sd=sd),type="l",lwd=1.75,main="",xlab="",ylab="",xlim=xlimits,yaxt="n")
+  dout <- dnorm(X,mean=mu,sd=sd)
+  plot(X,dout,type="l",lwd=1.75,main="",xlab="",ylab="",xlim=xlimits,yaxt="n")
   mtext(main.text,side=3,cex=1.25,line=.75)
 
   x.left <- seq(xcors[1],xcors[2],.01)
@@ -77,6 +86,16 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
     cord.y <- c(0,dnorm(x.right,mu,sd),0)
     polygon(cord.x,cord.y,col=shade.colors[3])
   }
+
+
+  if(show.values==TRUE){
+    ypos <- 1*(max(dout)-min(dout))
+    xpos <- xcors[1]
+    plot.val1 <- round(plot.val1,3)
+    plot.val2 <- round(plot.val2,3)
+    legend(xpos,ypos,fill=c(shade.colors[2],shade.colors[1]),legend=c(plot.val1,plot.val2),bty="n")
+  }
+
 
    pow
 

@@ -6,7 +6,8 @@
 \usage{
 power.plot1(mu = 60, sd = 1, xlimits = c(55, 65), plot.type = "Ho",
   alpha = 0.05, xcors = c(56, 59, 61, 65), alt.hyp = "mu1<mu0",
-  shade.colors = c("darkgoldenrod1", "cornsilk", "darkgoldenrod1"))
+  shade.colors = c("darkgoldenrod1", "cornsilk", "darkgoldenrod1"),
+  show.values = FALSE)
 }
 \arguments{
 \item{mu}{A value for the mean of the distribution}
@@ -24,6 +25,8 @@ power.plot1(mu = 60, sd = 1, xlimits = c(55, 65), plot.type = "Ho",
 \item{alt.hyp}{One of: "mu1<>mu0", "mu1<mu0", or "mu1>mu0"}
 
 \item{shade.colors}{colors for the regions of interest}
+
+\item{show.values}{Select whether Type I, II, and Power are displayed in plot.}
 }
 \value{
 pow Probability of correct rejection (For plot.type="Ha")

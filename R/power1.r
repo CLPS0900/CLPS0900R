@@ -6,6 +6,7 @@
 #' @param n  A value for the sample size
 #' @param alpha A value between .005 and .1 for the Type I error rate
 #' @param alt.hyp One of: "mu1<>mu0", "mu1<mu0", or "mu1>mu0"
+#' @param show.values Select whether Type I, II, and Power are displayed in plot.
 #'
 #' @return
 #' res Summary, included Type I error (alpha), Type II error (beta), and Power
@@ -14,7 +15,7 @@
 #'  power1()
 #'
 #' @export
-power1 <- function(mu0=50,mu1=50,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
+power1 <- function(mu0=50,mu1=50,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0",show.values=FALSE){
 
   par(mfrow=c(2,1))
   par(mai=c(.5,.5,.5,.5))
@@ -32,23 +33,24 @@ power1 <- function(mu0=50,mu1=50,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
 
   #plot Ho
 
-  pow <- power.plot1(mu=mu0,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ho",alpha=alpha)
+  pow <- power.plot1(mu=mu0,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ho",alpha=alpha,show.values=show.values)
+
 
   #plot Ha
 
   if(alt.hyp=="mu1<>mu0"){
-    pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
+    pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",show.values=show.values,
                 shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 
   if(alt.hyp=="mu1<mu0" & mu1<=mu0){
    #effect can be detected...
-    pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
+    pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",show.values=show.values,
               shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 
   if(alt.hyp=="mu1>mu0" & mu1>=mu0){
-    pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
+    pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",show.values=show.values,
                 shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 

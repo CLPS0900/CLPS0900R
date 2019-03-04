@@ -9,6 +9,7 @@
 #' @param alt.hyp One of: "mu1<>mu0", "mu1<mu0", or "mu1>mu0"
 #' @param shade.colors colors for the regions of interest
 #' @param show.values Select whether Type I, II, and Power are displayed in plot.
+#' @param show.means Whether to plot means for Ho and Ha
 #'
 #' @return
 #' pow Probability of correct rejection (For plot.type="Ha")
@@ -21,17 +22,18 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
                         xcors=c(56,59,61,65),
                         alt.hyp="mu1<mu0",
                         shade.colors=c("darkgoldenrod1","cornsilk","darkgoldenrod1"),
-                        show.values=FALSE){
+                        show.values=FALSE,show.means=FALSE){
 
   xlo <- xlimits[1]
   xhi <- xlimits[2]
 
   if(plot.type=="Ho"){
     alpha <- round(alpha,3)
-    main.text<- paste(plot.type,"(alpha=",alpha,")")
+    main.text<- paste(plot.type) #,"(alpha=",alpha,")")
     pow <- NULL
-    plot.val1 <- (1-alpha) #paste("1-alpha:",(1- alpha))
-    plot.val2 <- alpha #paste("alpha:",alpha)
+    aval <- alpha
+    plot.val1 <- paste("1-a =",(1-alpha))
+    plot.val2 <- paste("Type I =",alpha)
   }
 
   if(plot.type=="Ha"){
@@ -44,10 +46,12 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
    pow <-p1 + p2
    pow <- round(pow,3)
 
-   main.text <- paste(plot.type,"(Power=",pow,")")
+   main.text <- paste(plot.type) #,"(Power=",pow,")")
 
-   plot.val1 <- 1-pow
-   plot.val2 <- pow
+   plot.val1 <- paste("Type II =",round((1-pow),3))
+   plot.val2 <- paste("Power =",pow)
+
+
 
 
   }
@@ -90,12 +94,13 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
 
   if(show.values==TRUE){
     ypos <- 1*(max(dout)-min(dout))
-    xpos <- xcors[1]
-    plot.val1 <- round(plot.val1,3)
-    plot.val2 <- round(plot.val2,3)
-    legend(xpos,ypos,fill=c(shade.colors[2],shade.colors[1]),legend=c(plot.val1,plot.val2),bty="n")
+    xpos <- xcors[1] - .05*(xcors[4]-xcors[1])
+    legend(xpos,ypos,fill=c(shade.colors[2],shade.colors[1]),legend=c(plot.val1,plot.val2),bty="n",cex=.9,xjust=0)
   }
 
+  if(show.means==TRUE){
+    abline(v=mu,lwd=1.5,lty=1,col="black")
+  }
 
    pow
 

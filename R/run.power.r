@@ -29,14 +29,15 @@ a one- or two-sided test, and your sample size.
   mu.upper <- round(mu0+4*sem,1)
   step.val <- .1
 
-  manipulate(power1(mu0=mu0,mu1=mu1,sd=sd,n=n,alpha=alpha,alt.hyp=alt.hyp,show.values=show.values),
+  manipulate(power1(mu0=mu0,mu1=mu1,sd=sd,n=n,alpha=alpha,alt.hyp=alt.hyp,show.values=show.values,show.means=show.means),
            mu0=slider(mu.lower,mu.upper,step=step.val,initial=mu0,label="Mean for Null Hyp. (mu0)"),
            mu1=slider(mu.lower,mu.upper,step=step.val,initial=mu1,label="Mean for Alternative Hyp. (mu1)"),
            alt.hyp=picker("mu1<>mu0","mu1<mu0","mu1>mu0",label="Alternative Hypothesis"),
            sd=slider(1,100,initial=10,label="Population Sigma"),
            n=slider(2,200,initial=n.init,step=1,label="Sample Size (N)"),
            alpha=slider(.005,.2,step=.005,initial=.05,label="alpha"),
-           show.values=checkbox(initial=FALSE,label="Show Legends")
+           show.values=checkbox(initial=FALSE,label="Show Legends"),
+           show.means=checkbox(initial=FALSE,label="Show Means")
       )
 
 

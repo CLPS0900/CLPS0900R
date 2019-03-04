@@ -5,7 +5,7 @@
 \title{Perform a power analysis, with plots for null and alternative distributions}
 \usage{
 power1(mu0 = 50, mu1 = 50, sd = 10, n = 100, alpha = 0.05,
-  alt.hyp = "mu1<>mu0", show.values = FALSE)
+  alt.hyp = "mu1<>mu0", show.values = FALSE, show.means = FALSE)
 }
 \arguments{
 \item{mu0}{A value for the mean under the null hypothesis}
@@ -21,6 +21,8 @@ power1(mu0 = 50, mu1 = 50, sd = 10, n = 100, alpha = 0.05,
 \item{alt.hyp}{One of: "mu1<>mu0", "mu1<mu0", or "mu1>mu0"}
 
 \item{show.values}{Select whether Type I, II, and Power are displayed in plot.}
+
+\item{show.means}{Whether to plot means for Ho and Ha}
 }
 \value{
 res Summary, included Type I error (alpha), Type II error (beta), and Power

@@ -14,7 +14,7 @@
 #' }
 
 #' @export
-run.power <- function(mu0=50,mu1=50,sd=10,n.init=20){
+run.power <- function(mu0=50,mu1=50,sd=10,n.init=25){
 
   sem <- sd/sqrt(n.init)
   mu.lower <- round(mu0-4*sem,1)

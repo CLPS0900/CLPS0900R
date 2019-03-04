@@ -14,7 +14,7 @@
 #'  power1()
 #'
 #' @export
-power1 <- function(mu0=60,mu1=57,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
+power1 <- function(mu0=50,mu1=50,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
 
   par(mfrow=c(2,1))
   par(mai=c(.5,.5,.5,.5))

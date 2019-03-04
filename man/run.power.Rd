@@ -4,7 +4,7 @@
 \alias{run.power}
 \title{Manipulate plot the null or alternative sampling distribution for a power analysis}
 \usage{
-run.power(mu0 = 50, mu1 = 50, sd = 10, n.init = 20)
+run.power(mu0 = 50, mu1 = 50, sd = 10, n.init = 25)
 }
 \arguments{
 \item{mu0}{A value for the mean under the null hypothesis}

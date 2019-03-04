@@ -38,18 +38,18 @@ power1 <- function(mu0=60,mu1=57,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
 
   if(alt.hyp=="mu1<>mu0"){
     pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
-                shade.colors=c("skyblue","red","skyblue"))
+                shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 
   if(alt.hyp=="mu1<mu0" & mu1<=mu0){
    #effect can be detected...
     pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
-              shade.colors=c("skyblue","red","skyblue"))
+              shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 
   if(alt.hyp=="mu1>mu0" & mu1>=mu0){
     pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
-                shade.colors=c("skyblue","red","skyblue"))
+                shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 
   if(alt.hyp=="mu1<mu0" & mu1>mu0){
@@ -65,7 +65,7 @@ power1 <- function(mu0=60,mu1=57,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
     \n")
 
     pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
-                shade.colors=c("red","red","red"))
+                shade.colors=c("brown3","brown3","brown3"))
 
   }
 
@@ -81,7 +81,7 @@ power1 <- function(mu0=60,mu1=57,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0"){
     *************************************************************************
     \n")
     pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",
-                shade.colors=c("red","red","red"))
+                shade.colors=c("brown3","brown3","brown3"))
 
   }
 

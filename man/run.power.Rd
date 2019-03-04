@@ -4,7 +4,7 @@
 \alias{run.power}
 \title{Manipulate plot the null or alternative sampling distribution for a power analysis}
 \usage{
-run.power(mu0 = 60, mu1 = 57, sd = 10, n = 100)
+run.power(mu0 = 50, mu1 = 50, sd = 10, n.init = 20)
 }
 \arguments{
 \item{mu0}{A value for the mean under the null hypothesis}
@@ -13,7 +13,7 @@ run.power(mu0 = 60, mu1 = 57, sd = 10, n = 100)
 
 \item{sd}{A positive value for the standard deviation for the population (null)}
 
-\item{n}{A value for the sample size}
+\item{n.init}{A value for the sample size}
 }
 \value{
 res Summary, included Type I error (alpha), Type II error (beta), and Power

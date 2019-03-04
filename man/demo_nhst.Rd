@@ -32,7 +32,8 @@ running the app.  This can be done with:
 plot(1)
 }
 \examples{
+\dontrun{
 demo_nhst(demo.type=1) #shows actual observations for 2 groups
 demo_nhst(demo.type=2) #shows simulation of random shuffling
-
+}
 }

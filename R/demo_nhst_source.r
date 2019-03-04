@@ -18,9 +18,10 @@
 #' @return None
 #'
 #' @examples
+#' \dontrun{
 #' demo_nhst(demo.type=1) #shows actual observations for 2 groups
 #' demo_nhst(demo.type=2) #shows simulation of random shuffling
-#'
+#' }
 #' @export
 demo_nhst <- function(demo.type=1,nreps=100,sleep.sec=.2,add.diff=3.75,show.ttest=F){
 

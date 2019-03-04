@@ -5,7 +5,7 @@
 \title{Manipulate one-sample z test}
 \usage{
 run.onesample.ztest(mu = 100, sigma = 15, n = 10,
-  observed.mean = 110)
+  observed.mean = 102)
 }
 \arguments{
 \item{mu}{A value for assumed true mean of population}

@@ -32,5 +32,6 @@ run.histnormal() Manipulate histnormal() function
 onesample.ztest() NHST of one sample mean using known mu and sigma
 
 run.onesample.ztest() Manipulate onesample.ztest
+run.power() Perform a power analysis
 }
 

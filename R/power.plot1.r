@@ -19,7 +19,7 @@
 power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
                         xcors=c(56,59,61,65),
                         alt.hyp="mu1<mu0",
-                        shade.colors=c("orange","lightgrey","orange")){
+                        shade.colors=c("darkgoldenrod1","cornsilk","darkgoldenrod1")){
 
   xlo <- xlimits[1]
   xhi <- xlimits[2]

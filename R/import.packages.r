@@ -1,2 +1,0 @@
-#' @import mosaic manipulate
-NULL

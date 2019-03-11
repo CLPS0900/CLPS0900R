@@ -10,6 +10,7 @@
 #' @param shade.colors colors for the regions of interest
 #' @param show.values Select whether Type I, II, and Power are displayed in plot.
 #' @param show.means Whether to plot means for Ho and Ha
+#' @param superimpose Whether to create new plot for Ha or superimpose over Ho
 #'
 #' @return
 #' pow Probability of correct rejection (For plot.type="Ha")
@@ -22,6 +23,7 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
                         xcors=c(56,59,61,65),
                         alt.hyp="mu1<mu0",
                         shade.colors=c("darkgoldenrod1","cornsilk","darkgoldenrod1"),
+                        superimpose=FALSE,
                         show.values=FALSE,show.means=FALSE){
 
   xlo <- xlimits[1]
@@ -51,25 +53,44 @@ power.plot1 <- function(mu=60,sd=1,xlimits=c(55,65),plot.type="Ho",alpha=.05,
    plot.val1 <- paste("Type II =",round((1-pow),3))
    plot.val2 <- paste("Power =",pow)
 
-
-
-
   }
 
-  if(alt.hyp=="mu1<mu0"){
-    shade.left<-T;shade.central<-T;shade.right<-F
+  if(plot.type=="Ho"){
+   if(alt.hyp=="mu1<mu0"){
+     shade.left<-T;shade.central<-T;shade.right<-F
+   }
+   if(alt.hyp=="mu1>mu0"){
+     shade.left<-F;shade.central<-T;shade.right<-T
+   }
+   if(alt.hyp=="mu1<>mu0"){
+      shade.left<-T;shade.central<-T;shade.right<-T
+      #shade.left<-T;shade.central<-F;shade.right<-T
+   }
   }
-  if(alt.hyp=="mu1>mu0"){
-    shade.left<-F;shade.central<-T;shade.right<-T
-  }
-  if(alt.hyp=="mu1<>mu0"){
-    shade.left<-T;shade.central<-T;shade.right<-T
+
+  if(plot.type=="Ha"){
+    if(alt.hyp=="mu1<mu0"){
+      shade.left<-T;shade.central<-T;shade.right<-F
+    }
+    if(alt.hyp=="mu1>mu0"){
+      shade.left<-F;shade.central<-T;shade.right<-T
+    }
+    if(alt.hyp=="mu1<>mu0"){
+      shade.left<-T;shade.central<-T;shade.right<-T
+      #shade.left<-F;shade.central<-T;shade.right<-T
+    }
   }
 
   X <- seq(xlo,xhi,.01)
   dout <- dnorm(X,mean=mu,sd=sd)
-  plot(X,dout,type="l",lwd=1.75,main="",xlab="",ylab="",xlim=xlimits,yaxt="n")
-  mtext(main.text,side=3,cex=1.25,line=.75)
+
+  if(superimpose==FALSE){
+   plot(X,dout,type="l",lwd=1.75,main="",xlab="",ylab="",xlim=xlimits,yaxt="n")
+   mtext(main.text,side=3,cex=1.25,line=.75)
+  }
+  if(superimpose==T){
+    lines(X,dout,lwd=1.75)
+  }
 
   x.left <- seq(xcors[1],xcors[2],.01)
   x.central <- seq(xcors[2],xcors[3],.01)

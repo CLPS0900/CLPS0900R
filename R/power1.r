@@ -42,7 +42,7 @@ power1 <- function(mu0=50,mu1=50,sd=10,n=100,alpha=.05,alt.hyp="mu1<>mu0",show.v
 
   if(alt.hyp=="mu1<>mu0"){
     pow <- power.plot1(mu=mu1,sd=sem,xcors=qs,alt.hyp=alt.hyp,xlimits=xlimits,plot.type="Ha",show.values=show.values,
-                       show.means=show.means,
+                       show.means=show.means,superimpose=FALSE,
                 shade.colors=c("cadetblue3","brown3","cadetblue3"))
   }
 

@@ -4,17 +4,19 @@
 \alias{onesample.ztest}
 \title{One sample NHST with known mu and sigma}
 \usage{
-onesample.ztest(mu = 100, sigma = 15, n = 10, observed.mean = 110,
-  test.type = "2-sided")
+onesample.ztest(x = rnorm(100, 100, 15), mu = 100, sigma = 15,
+  n = 10, observed.mean = 110, test.type = "2-sided")
 }
 \arguments{
+\item{x}{Data to be used.}
+
 \item{mu}{A value for assumed population true mean}
 
 \item{sigma}{A value for assumed population true sigma}
 
-\item{n}{An integer for sample size}
+\item{n}{An integer for sample size (if data not provided).}
 
-\item{observed.mean}{A value for the observed sample mean}
+\item{observed.mean}{A value for the observed sample mean if data not provided.}
 
 \item{test.type}{one- or two-sided test}
 }
@@ -25,6 +27,6 @@ none
 One sample NHST with known mu and sigma
 }
 \examples{
- onesample.ztest(mu=100,sigma=15,n=10,observed.mean=110,test.type="2-sided")
+ onesample.ztest(x=rnorm(100,mean=100,sd=15),mu=100,sigma=15)
 
 }

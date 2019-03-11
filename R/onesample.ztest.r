@@ -1,21 +1,27 @@
 #' One sample NHST with known mu and sigma
 #'
+#' @param x Data to be used.
 #' @param mu  A value for assumed population true mean
 #' @param sigma  A value for assumed population true sigma
-#' @param n  An integer for sample size
-#' @param observed.mean  A value for the observed sample mean
+#' @param n  An integer for sample size (if data not provided).
+#' @param observed.mean  A value for the observed sample mean if data not provided.
 #' @param test.type  one- or two-sided test
 #'
 #' @return
 #' none
 #'
 #' @examples
-#'  onesample.ztest(mu=100,sigma=15,n=10,observed.mean=110,test.type="2-sided")
+#'  onesample.ztest(x=rnorm(100,mean=100,sd=15),mu=100,sigma=15)
 #'
 #' @export
-onesample.ztest <- function(mu=100,sigma=15,n=10,observed.mean=110,test.type="2-sided"){
+onesample.ztest <- function(x=rnorm(100,100,15),mu=100,sigma=15,n=10,observed.mean=110,test.type="2-sided"){
 
   #illustrate test of mean, with known population mu and sigma
+
+  if(!is.null(x)){
+    n <- length(x)
+    observed.mean <- mean(x)
+  }
 
   sem <- sigma/sqrt(n)
   xlo <- mu - 4*sem

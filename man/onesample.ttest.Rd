@@ -4,7 +4,7 @@
 \alias{onesample.ttest}
 \title{One sample t test}
 \usage{
-onesample.ttest(x = rnorm(10, 0, 1), test.type = "1-sided")
+onesample.ttest(x = rnorm(10, 0, 1), test.type = "2-sided")
 }
 \arguments{
 \item{x}{Data to be tested}

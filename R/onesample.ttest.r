@@ -10,7 +10,7 @@
 #'  onesample.ttest(x=rnorm(10),test.type="2-sided")
 #'
 #' @export
-onesample.ttest <- function(x=rnorm(10,0,1),test.type="1-sided"){
+onesample.ttest <- function(x=rnorm(10,0,1),test.type="2-sided"){
 
   #illustrate one-sample t-test of observed mean vs Ho with assumed mu, sigma unknown
 
@@ -93,6 +93,8 @@ onesample.ttest <- function(x=rnorm(10,0,1),test.type="1-sided"){
 
 
   }
+
+  print(t.test(x,mu=mu))
 
   result
 }

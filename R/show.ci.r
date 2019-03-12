@@ -99,12 +99,17 @@ show.ci <- function(nsamp=100,ssize=2,mu=0,sigma=1,conf.level=.68,
   if(1==2){
   if(show.data==TRUE & ssize <= 4 & nsamp <= 10){
     if(xm >= mu){
-      text(ci[2],sn,toString(round(sort(x),2)),adj=-.1,cex=.7)
+      text(ci[2],sn,toString(round(sort(x),0)),adj=-.1,cex=.7)
     }
     if(xm < mu){
-      text(ci[1],sn,toString(round(sort(x),2)),adj=1.1,cex=.7)
+      text(ci[1],sn,toString(round(sort(x),0)),adj=1.1,cex=.7)
     }
   }
+  }
+
+  if(show.data==TRUE & ssize <= 4 & nsamp <= 10){
+   xt <- round(sort(x),2)
+   cat("\n   Data: ",xt)
   }
 
   if( nsamp <= 50){ #show.data==TRUE ){ #& nsamp <= 10){

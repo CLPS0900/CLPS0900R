@@ -28,7 +28,7 @@ run.ci <- function(){
              mu=slider(0,100,initial=100,label="Population mu"),
              sigma=slider(1,100,initial=15,label="Population sigma"),
              nsamp=slider(10,100,label="Number of samples"),
-             ssize=slider(2,100,label="Sample size"),
+             ssize=slider(2,100,label="Sample size",initial=4),
              conf.level=slider(.68,.96,step=.01,initial=.95,label="Confidence Level"),
              ci.method=picker("Sigma known","Sigma unknown",label="CI Method"),
              do.pause=picker("None",initial="None",label="Type of Pause"),

@@ -12,7 +12,6 @@
 #'
 #' @examples
 #' one.sample.t(x=rnorm(10),mu=0)
-#' one.sample.t(sample.mean=8,sample.sd=1,n=10,mu=10)
 #'
 #' @export
 one.sample.t <- function(x=NULL,sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0,
@@ -97,15 +96,16 @@ one.sample.t <- function(x=NULL,sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0,
    cat("\nYou t ratio is outside the plot range.  Your test results are shown below.\n")
  }
 
- results <- matrix(c(round(sample.mean,2),round(sample.sd,2),n,df,t.obs.r,p.r,mu))
- dimnames(results)[[1]] <- c("mean","sd","n","df","t","p","mu(Ho)")
+ tout <- t.test(x=xdata,mu=mu)
+ c.int <- tout$conf.int
+
+ results <- matrix(c(round(sample.mean,2),round(sample.sd,2),n,df,t.obs.r,p.r,mu,c.int[1],c.int[2]))
+ dimnames(results)[[1]] <- c("mean","sd","n","df","t","p","mu(Ho)","CI.lower","CI.upper")
  dimnames(results)[[2]] <- "Value"
 
- cat("\n\n***************************************************\n")
+ cat("\n\n***********************************************************\n")
  cat(paste("\nStudents One-sample t (",test.type,")\n\n",sep=""))
  print(t(results))
- cat("\n***************************************************")
-
-
+ cat("\n***********************************************************")
 
 }

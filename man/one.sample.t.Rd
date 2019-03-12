@@ -30,6 +30,5 @@ areas beyond t observed.
 }
 \examples{
 one.sample.t(x=rnorm(10),mu=0)
-one.sample.t(sample.mean=8,sample.sd=1,n=10,mu=10)
 
 }

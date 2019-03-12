@@ -96,6 +96,7 @@ show.ci <- function(nsamp=100,ssize=2,mu=0,sigma=1,conf.level=.68,
   segments(xm,sn-.3,xm,sn+.3,lwd=2)
   segments(ci[1],sn,ci[2],sn,col=line.color,lwd=2)
 
+  if(1==2){
   if(show.data==TRUE & ssize <= 4 & nsamp <= 10){
     if(xm >= mu){
       text(ci[2],sn,toString(round(sort(x),2)),adj=-.1,cex=.7)
@@ -103,6 +104,7 @@ show.ci <- function(nsamp=100,ssize=2,mu=0,sigma=1,conf.level=.68,
     if(xm < mu){
       text(ci[1],sn,toString(round(sort(x),2)),adj=1.1,cex=.7)
     }
+  }
   }
 
   if( nsamp <= 50){ #show.data==TRUE ){ #& nsamp <= 10){

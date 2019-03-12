@@ -14,7 +14,7 @@
 #' one.sample.t(x=rnorm(10),mu=0)
 #'
 #' @export
-one.sample.t <- function(x=NULL,sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0,
+one.sample.t <- function(x=rnorm(10),sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0,
                          test.type="2-sided"){
 
  if(is.null(x) & is.null(sample.mean)){

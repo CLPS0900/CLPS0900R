@@ -32,8 +32,8 @@ onesample.ztest <- function(observed.mean=110,mu=100,sigma=15,n=10,test.type="2-
 
   p.smaller <- (1-conf.level)/2
   zcrit <- abs(qnorm(p.smaller))
-  ci.lower <- round(mu - zcrit*sem,2)
-  ci.upper <- round(mu + zcrit*sem,2)
+  ci.lower <- round(observed.mean - zcrit*sem,2)
+  ci.upper <- round(observed.mean + zcrit*sem,2)
 
   ci.text <- paste("Confidence Interval (",conf.level,"): ",ci.lower," ",ci.upper,sep="")
 

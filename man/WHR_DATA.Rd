@@ -10,11 +10,11 @@ CLPS0900 (Quantitative Methods in the Psychological Science).
 }
 \usage{data("WHR_DATA")}
 \format{
-A data frame consisting of 192 rows (countries) and 6 variables
+A data frame consisting of 156 rows (countries) and 15 variables
 
 }
 \details{
-More info about data set goes here...
+ See: http://worldhappiness.report/ed/2019/
 }
 \source{
 http://worldhappiness.report/ed/2019/

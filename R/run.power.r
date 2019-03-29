@@ -12,7 +12,6 @@
 #' \dontrun{
 #' run.power()
 #' }
-
 #' @export
 run.power <- function(mu0=50,mu1=50,sd=10,n.init=25){
 

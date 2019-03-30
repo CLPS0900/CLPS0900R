@@ -10,6 +10,7 @@
 #' @export
 sdpop <- function(x){
   #return sd assuming x is a population and thus var = SS/N
+  x <- x[!is.na(x)]
   ss <- sum((x - mean(x))^2)
   s <- sqrt(ss/length(x))
   s

@@ -4,7 +4,9 @@
 \alias{samp.dist1}
 \title{Demonstration of sampling distribution of the mean}
 \usage{
-samp.dist1(ssize = 5, pop.type = "Uniform[1-10]", add.normal = TRUE)
+samp.dist1(ssize = 5, pop.type = "Uniform[1-10]", add.normal = TRUE,
+  custom.data = NULL, show.pop = TRUE, show.flex = TRUE,
+  show.fixed = TRUE, show.qnorm = TRUE)
 }
 \arguments{
 \item{ssize}{An integer for the size of the sample}
@@ -12,6 +14,16 @@ samp.dist1(ssize = 5, pop.type = "Uniform[1-10]", add.normal = TRUE)
 \item{pop.type}{Controls the type of population from which samples are drawn}
 
 \item{add.normal}{#controls whether normal distribution is superimposed}
+
+\item{custom.data}{User supplied vector of data to be used}
+
+\item{show.pop}{display population}
+
+\item{show.flex}{show sampling distribution with flexible x axis}
+
+\item{show.fixed}{show sampling distribution with fixed x axis}
+
+\item{show.qnorm}{show normal quantile plot}
 }
 \value{
 None

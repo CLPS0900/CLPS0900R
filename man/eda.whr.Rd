@@ -8,7 +8,8 @@ Typically called by run_whr()}
 eda.whr(dv, iv, f1.name, f2.name, add.normal = FALSE,
   add.qnorm = FALSE, show.aov = FALSE, show.tukey = FALSE,
   show.barplot = FALSE, conf.level = 0.95, show.boxplots = FALSE,
-  n.int = 10, adj.barlimits = FALSE, show.stats = FALSE)
+  n.int = 10, adj.barlimits = FALSE, show.stats = FALSE,
+  check.sampdist = FALSE)
 }
 \arguments{
 \item{dv}{A continuous quantitative dependent variable}
@@ -38,6 +39,8 @@ eda.whr(dv, iv, f1.name, f2.name, add.normal = FALSE,
 \item{adj.barlimits}{Controls limits for y axis in barplot}
 
 \item{show.stats}{Controls display of descriptive statistics}
+
+\item{check.sampdist}{Controls checking of sampling distribution of the statistic}
 }
 \value{
 none

@@ -3,6 +3,11 @@
 #' @param ssize An integer for the size of the sample
 #' @param pop.type Controls the type of population from which samples are drawn
 #' @param add.normal #controls whether normal distribution is superimposed
+#' @param custom.data User supplied vector of data to be used
+#' @param show.pop display population
+#' @param show.flex show sampling distribution with flexible x axis
+#' @param show.fixed show sampling distribution with fixed x axis
+#' @param show.qnorm show normal quantile plot
 #'
 #' @return None
 #'
@@ -10,7 +15,8 @@
 #' samp.dist1()
 #'
 #' @export
-samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
+samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE,custom.data=NULL,
+                       show.pop=TRUE,show.flex=TRUE,show.fixed=TRUE,show.qnorm=TRUE){
 
   #################################################################
   #sampling distributions of the mean
@@ -62,12 +68,15 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
   if(pop.type=="US Violent Crime"){
     x <- states_data$violent.crime
   }
+  if(pop.type=="World Happiness Report"){
+    x <- WHR_DATA$happiness
+  }
 
   if(pop.type=="Custom"){
-    if(exists("test.data")==FALSE){
-      cat("\nError: You must put the values to be treated as the population in a variable named test.data.\n\n")
+    if(is.null(custom.data)){
+      cat("\nError: You must supply the custom.data to be used.\n\n")
     }
-    x <- test.data
+    x <- custom.data
   }
 
   nsamp <- 2500
@@ -76,7 +85,7 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
   n <- length(x)
 
   if(pop.type != "Normal" & pop.type!="Bimodal"){
-    mu.pop <- round(mean(x),2)
+    mu.pop <- round(mean(x,na.rm=TRUE),2)
     sd.pop <- round(sdpop(x),2)
   }
 
@@ -90,6 +99,8 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
   x.hi <- mu.pop + 4 * sd.pop
   xlimits.fixed <- c(x.lo,x.hi)
 
+  if(show.pop==TRUE){
+
   if(pop.type=="Uniform[1-6]"){
     hist(x, probability = T, ylab = "Relative Frequency", main = "",
          include.lowest = T, xlab = "",xlim=xlimits.fixed,col="tan",
@@ -100,6 +111,8 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
    hist(x, probability = T, ylab = "Relative Frequency", main = "",
        include.lowest = T, xlab = "",xlim=xlimits.fixed,col="tan")
    mtext(main.text,line=1,cex=font.size5)
+  }
+
   }
 
   ###################################
@@ -117,8 +130,9 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
     }
   }
 
-  m <- round(mean(smeans),2)
-  sd.samp <- round(sd(smeans),2)  #here we use unbiased estimator, as we have random samples
+  m <- round(mean(smeans,na.rm=TRUE),2)
+  smeans2 <- smeans[!is.na(smeans)]
+  sd.samp <- round(sd(smeans2),2)  #here we use unbiased estimator, as we have random samples
 
   z <- seq(-4, 4, by = 0.1)
   q <- (z * sd.samp) + m
@@ -137,12 +151,14 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
     nct <- nc
   }
 
-  hist(smeans, main="",xlab = "", ylab = "", probability = T,
+  if(show.flex==TRUE){
+   hist(smeans, main="",xlab = "", ylab = "", probability = T,
        xlim = xlimits, nclass = nct, yaxt = "n",col="tan")
-  mtext(main.text,line=1,cex=font.size5)
+   mtext(main.text,line=1,cex=font.size5)
 
-  if(add.normal==TRUE){
-   lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
+   if(add.normal==TRUE){
+     lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
+   }
   }
 
   ###################################
@@ -150,6 +166,7 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
 
   xlimits <- xlimits.fixed
 
+  if(show.fixed==TRUE){
    hist(smeans, main="",xlab = "Mean\n(original limits)", ylab = "",
         probability = T, xlim = xlimits, nclass = nct, yaxt = "n",col="tan")
    mtext(main.text,line=1,cex=font.size5)
@@ -157,11 +174,13 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE){
    if(add.normal==TRUE){
     lines(q, dnorm(q, m, sd.samp), col = "red",lwd=lwd.setting)
    }
+  }
 
   ###################################
   #show qqplot
-
-  qout <- qqnorm(smeans,main="Normal Quantile Plot",xlab="Expected Z Scores",ylab="Observed Values")
-  qqline(smeans,col="red",lwd=2)
+  if(show.qnorm==TRUE){
+   qout <- qqnorm(smeans,main="Normal Quantile Plot",xlab="Expected Z Scores",ylab="Observed Values")
+   qqline(smeans,col="red",lwd=2)
+  }
 
 }

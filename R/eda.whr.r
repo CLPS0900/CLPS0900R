@@ -15,6 +15,7 @@
 #' @param n.int number of intervals used in histogram
 #' @param adj.barlimits Controls limits for y axis in barplot
 #' @param show.stats Controls display of descriptive statistics
+#' @param check.sampdist Controls checking of sampling distribution of the statistic
 #'
 #' @return
 #' none
@@ -27,7 +28,7 @@
 eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
                     show.aov=FALSE,show.tukey=FALSE,show.barplot=FALSE,
                     conf.level=.95,show.boxplots=FALSE,n.int=10,
-                    adj.barlimits=FALSE,show.stats=FALSE){
+                    adj.barlimits=FALSE,show.stats=FALSE,check.sampdist=FALSE){
 
   par(mfrow=c(2,2))
 
@@ -48,7 +49,6 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   hname <- paste("Histogram of",f1.name)
   mtext(side=3,line=1,text=hname,cex=1)
 
-
   if(add.normal==TRUE){
     xm <- mean(x$dv)
     xsd <- sd(x$dv)
@@ -61,6 +61,13 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
    mtext(side=3,line=1,text=qname,cex=1)
   }
 
+  if(check.sampdist==TRUE){
+     samp.dist1(pop.type="Custom",ssize=35,custom.data=dv,
+                show.pop=FALSE,show.flex=TRUE,show.fixed=FALSE,show.qnorm=TRUE)
+  }
+
+  #obtain various stats needed
+
   xm <- tapply(x$dv,x$Groups,"mean")
   xsd <- tapply(x$dv,x$Groups,"sd")
   xvar <- xsd^2
@@ -72,11 +79,33 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   msw <- ss/sum(xdf)
   s.pooled <- sqrt(msw)
 
-  if(show.boxplots==TRUE){
+  k <- length(xm)
+  dfb <- k-1
+  dfw <- sum(xdf)
+
+  ssb <- msb*dfb
+  ssw <- msw*dfw
+  r.squared <- ssb/(ssb+ssw)
+
+  f.obs <- msb/msw
+
+  #cohens d
+
+  d12 <- (xm[2]-xm[1])/s.pooled
+  d23 <- (xm[3]-xm[2])/s.pooled
+  d34 <- (xm[4]-xm[3])/s.pooled
+  cohens.d <- c(d12,d23,d34)
+
+  gdp.d1 <- 7862-1891
+  gdp.d2 <- 16852 - 7862
+  gdp.d3 <- 47142-16852
+  gdp.diff <- c(gdp.d1,gdp.d2,gdp.d3)
+
+ if(show.boxplots==TRUE){
 
     if(f2.name!="region.broad"){
-    cen <- boxplot(dv ~ Groups,data=x,col=p.colors[2],xlab="",ylab=f1.name,
-                   main="",names=gnames)
+      cen <- boxplot(dv ~ Groups,data=x,col=p.colors[2],xlab="",ylab=f1.name,
+                     main="",names=gnames)
     }
     else {
       cen <- boxplot(dv ~ Groups,data=x,col=p.colors[2],xlab="",ylab=f1.name,
@@ -87,24 +116,6 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
     mtext(side=3,line=1,text=bpname,cex=1)
     mtext(side=1,line=2.5,text=f2.name,cex=1)
   }
-
-
-  d12 <- (xm[2]-xm[1])/s.pooled
-  d23 <- (xm[3]-xm[2])/s.pooled
-  d34 <- (xm[4]-xm[3])/s.pooled
-
-  cohens.d <- c(d12,d23,d34)
-  gdp.d1 <- 7862-1891
-  gdp.d2 <- 16852 - 7862
-  gdp.d3 <- 47142-16852
-  gdp.diff <- c(gdp.d1,gdp.d2,gdp.d3)
-
-
-  #print(cohens.d)
-
-  dfb <- length(xm)-1
-  dfw <- sum(xdf)
-  f.obs <- msb/msw
 
   ci.lo <- xm - xse * qt((conf.level)/2 + .5, xdf)
   ci.hi <- xm + xse * qt((conf.level)/2 + .5, xdf)
@@ -130,7 +141,7 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   else {
    cen <- barplot(my_sum$mean,col=p.colors[3],xlab="",ylim=ylimits,xpd=FALSE)
   }
-    abline(h=ylimits[1])
+   abline(h=ylimits[1])
    segments(cen,ci.lo,cen,ci.hi,lwd=1,col="black")
    mtext(side=1,text=f2.name,line=2.25,cex=1)
    mtext(side=2,text="Mean",line=2.2,cex=1)
@@ -160,7 +171,20 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
     cat(f1.name,"~",f2.name,"\n")
     cat("\n")
     print(summary(aov.out))
+
+    if(1==2){
+     cat("\nChecking hand computations:\n\n")
+     cat("SSb=",ssb,"SSw=",ssw,"MSb=",msb,"MSw=",msw,"Fobs=",f.obs,"r-squared=",r.squared)
+     cat("\n")
+     cat("\nCohens d for 1-2 2-3 and 3-4:\n\n")
+     dout <- cbind(cohens.d,gdp.diff)
+     dout <- round(dout,2)
+     dimnames(dout)[[1]] <- c("Group 1 v 2","Group 2 v 3","Group 3 v 4")
+     print(dout)
+    }
+
     cat("\n__________________________________________________________________\n")
+
   }
 
   if(show.tukey){
@@ -169,7 +193,10 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
     cat("Tukey HSD Comparisons: ")
     cat(f1.name,"~",f2.name,"\n")
     cat("\nFamily Wise adjusted alpha:",1-.95)
-    cat("\n\n")
+    cat("\n")
+    cat("\ndiff=Pairwise difference between means.  ")
+    cat("\nlwd, upr indicate limits of 95% CI for the difference.")
+    cat("\np indicates whether difference exceeds critical HSD.\n\n")
 
     hsd <- TukeyHSD(aov.out, "Groups", ordered = FALSE,conf.level=.95)
     hsd <- hsd$Groups

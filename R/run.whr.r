@@ -28,7 +28,7 @@ run.whr <- function(){
                                     "social.supp","generosity",label="Dependent Variable"),
                      factor2=picker("gdp.groups","corruption.groups",
                                     "freedom.groups","social.supp.groups",
-                                    "generosity.groups","region.broad",
+                                    "generosity.groups",
                                     label="Independent Variable"),
                      add.normal=checkbox(FALSE,"Superimpose Normal"),
                      add.qnorm=checkbox(FALSE,"Normal Quantile Plot"),

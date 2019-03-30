@@ -37,7 +37,14 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   x <- data.frame(dv=dv,Groups=as.factor(iv))
   x <- x[!is.na(dv) & !is.na(iv),]
 
-  hist(x$dv,col=p.colors[1],prob=TRUE,main="",xlab="Value",breaks=n.int )
+  hout <- hist(x$dv,breaks=n.int,plot=FALSE)
+  hout <- hout$density
+
+  ylo <- 0
+  yhi <- max(hout) + .1*(max(hout)-min(hout))
+  ylimits <- c(ylo,yhi)
+
+  hist(x$dv,col=p.colors[1],prob=TRUE,main="",xlab="Value",breaks=n.int ,ylim=ylimits)
   hname <- paste("Histogram of",f1.name)
   mtext(side=3,line=1,text=hname,cex=1)
 
@@ -117,8 +124,13 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
 
   if(show.barplot==TRUE){
 
+  if(f2.name!="region.broad"){
    cen <- barplot(my_sum$mean,col=p.colors[3],xlab="",ylim=ylimits,names=gnames,xpd=FALSE)
-   abline(h=ylimits[1])
+  }
+  else {
+   cen <- barplot(my_sum$mean,col=p.colors[3],xlab="",ylim=ylimits,xpd=FALSE)
+  }
+    abline(h=ylimits[1])
    segments(cen,ci.lo,cen,ci.hi,lwd=1,col="black")
    mtext(side=1,text=f2.name,line=2.25,cex=1)
    mtext(side=2,text="Mean",line=2.2,cex=1)

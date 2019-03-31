@@ -64,6 +64,12 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   if(check.sampdist==TRUE){
      samp.dist1(pop.type="Custom",ssize=35,custom.data=dv,
                 show.pop=FALSE,show.flex=TRUE,show.fixed=FALSE,show.qnorm=TRUE)
+
+    cat("\n\n________________________________________________________________________\n")
+    cat("\nWARNING: DESELECT Check Sampling Distribution before you continue.\n")
+    cat("This is to ensure all of your plots will appear on one screen.")
+    cat("\n\n________________________________________________________________________\n")
+
   }
 
   #obtain various stats needed

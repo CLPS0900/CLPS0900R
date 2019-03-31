@@ -4,6 +4,8 @@
 #' tools that are used in weekly problem sets, and associated data sets.
 #'
 #' @section CLPS0900R functions:
+#' run.whr() A suite of ANOVA and other analyses using World Happiness Report data
+#'
 #' demo_hist()  A simple histogram
 #'
 #' demo_nhst()  A simulation of 2-sample comparisons

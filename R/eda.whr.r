@@ -31,6 +31,7 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
                     adj.barlimits=FALSE,show.stats=FALSE,check.sampdist=FALSE){
 
   par(mfrow=c(2,2))
+  cat("\014")
 
   gnames <- c("V-Low","Low","High","V-High")
   p.colors <- c("tan","cadetblue","antiquewhite3")

@@ -184,39 +184,14 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
     p.obs <- round(p.obs,4)
     f.obs <- round(f.obs,2)
 
-    if(1==2){
-    res <- matrix(NA,3,6)
-    cnames <- c("Source","SS","df","MS","F","p")
-    rnames <- c("Between","Within","Total")
-    dimnames(res)[[1]] <- rnames
-    res[1,1:5] <- c(ssb,dfb,msb,f.obs,p.obs)
-    res[2,1:3] <- c(ssw,dfw,msw)
-    res[3,1:2] <- c(ss.total,df.total)
-    cat("\n",cnames,"\n")
-    print(res)
-    }
-
     cat("\n__________________________________________________________________\n\n")
     cat("ANOVA model summary: ")
     cat(f1.name,"~",f2.name,"\n")
     cat("\n")
     print(summary(aov.out))
-    cat("\nTotal      ",df.total,ss.total,"\n")
 
-    if(1==2){
-    cat("\nSource            SS   df    MS    F    p")
-    cat("\nBetween    ",ssb,dfb,msb,f.obs,p.obs)
-    cat("\nWithin     ",ssw,dfw,msw)
-    cat("\nTotal      ",ss.total,df.total)
-     cat("\nChecking hand computations:\n\n")
-     cat("SSb=",ssb,"SSw=",ssw,"MSb=",msb,"MSw=",msw,"Fobs=",f.obs,"r-squared=",r.squared)
-     cat("\n")
-     cat("\nCohens d for 1-2 2-3 and 3-4:\n\n")
-     dout <- cbind(cohens.d,gdp.diff)
-     dout <- round(dout,2)
-     dimnames(dout)[[1]] <- c("Group 1 v 2","Group 2 v 3","Group 3 v 4")
-     print(dout)
-    }
+    cat("\n            Df Sum Sq\n")
+    cat("Total      ",df.total,ss.total,"\n")
 
     cat("\n__________________________________________________________________\n")
 

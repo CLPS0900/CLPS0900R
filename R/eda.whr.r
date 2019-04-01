@@ -172,13 +172,42 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   aov.out <- aov(dv ~ Groups,data=x)
 
   if(show.aov==TRUE){
+
+    ss.total <- ssb + ssw
+    df.total <- dfb + dfw
+    p.obs <- 1 - pf(f.obs,df1=dfb,df2=dfw)
+    ss.total <- round(ss.total,2)
+    ssb <- round(ssb,2)
+    ssw <- round(ssw,2)
+    msw <- round(msw,2)
+    msb <- round(msb,2)
+    p.obs <- round(p.obs,4)
+    f.obs <- round(f.obs,2)
+
+    if(1==2){
+    res <- matrix(NA,3,6)
+    cnames <- c("Source","SS","df","MS","F","p")
+    rnames <- c("Between","Within","Total")
+    dimnames(res)[[1]] <- rnames
+    res[1,1:5] <- c(ssb,dfb,msb,f.obs,p.obs)
+    res[2,1:3] <- c(ssw,dfw,msw)
+    res[3,1:2] <- c(ss.total,df.total)
+    cat("\n",cnames,"\n")
+    print(res)
+    }
+
     cat("\n__________________________________________________________________\n\n")
     cat("ANOVA model summary: ")
     cat(f1.name,"~",f2.name,"\n")
     cat("\n")
     print(summary(aov.out))
+    cat("\nTotal      ",df.total,ss.total,"\n")
 
     if(1==2){
+    cat("\nSource            SS   df    MS    F    p")
+    cat("\nBetween    ",ssb,dfb,msb,f.obs,p.obs)
+    cat("\nWithin     ",ssw,dfw,msw)
+    cat("\nTotal      ",ss.total,df.total)
      cat("\nChecking hand computations:\n\n")
      cat("SSb=",ssb,"SSw=",ssw,"MSb=",msb,"MSw=",msw,"Fobs=",f.obs,"r-squared=",r.squared)
      cat("\n")

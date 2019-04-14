@@ -103,6 +103,7 @@ eda.whr <- function(dv,iv,f1.name,f2.name,add.normal=FALSE,add.qnorm=FALSE,
   d34 <- (xm[4]-xm[3])/s.pooled
   cohens.d <- c(d12,d23,d34)
 
+
   gdp.d1 <- 7862-1891
   gdp.d2 <- 16852 - 7862
   gdp.d3 <- 47142-16852

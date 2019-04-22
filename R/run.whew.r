@@ -20,7 +20,6 @@ run.whew <- function(){manipulate(whew1(do.hist=do.hist,do.scatter=do.scatter,
                                      do.scatter=checkbox(FALSE,"Scatterplot + Histograms + Correlations"),
                                      do.corr.life=checkbox(FALSE,"Correlations with Life Exp."),
                                      do.corr.happ=checkbox(FALSE,"Correlations with Happiness"),
-                                     show.lm.summary=checkbox(FALSE,"Show Regression Summary"),
                                      model.type=picker("None","Life ~ Education","Life ~ Education + GDP",
                                                        "Life ~ Education * GDP","Life ~ Education + log(GDP)",
                                                        "Life ~ Education * log(GDP)",
@@ -30,7 +29,9 @@ run.whew <- function(){manipulate(whew1(do.hist=do.hist,do.scatter=do.scatter,
                                                        "Happiness ~ Alcohol",
                                                        "Happiness ~ Alcohol + GDP",
                                                        "Happiness ~ Alcohol * GDP",
-                                                       label="Regression")
+                                                       label="Regression"),
+                                     show.lm.summary=checkbox(FALSE,"Show Regression Summary")
+
 )
 
 }

@@ -1,4 +1,5 @@
-whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE,do.corr.happ=FALSE,
+whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE,
+                  do.corr.happ=FALSE,
                   pause=FALSE,model.type=0,
                   show.lm.summary=FALSE){
 
@@ -22,8 +23,11 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
 
   if(model.type != "None"){
     do.scatter <- FALSE
-    do.corr <- FALSE
+    do.corr.life <- FALSE
+    do.corr.happ <- FALSE
+    do.hist <- FALSE
   }
+
 
   ############################################################
   #hist to initialize mplot display

@@ -119,6 +119,7 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Healthy Life Expectancy ~ Education\n")
     print(summary(lmout))
+    print(anova(lmout))
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
    }
@@ -153,6 +154,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Healthy Life Expectancy ~ Education + GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -187,6 +190,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Healthy Life Expectancy ~ Education X GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -205,6 +210,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Healthy Life Expectancy ~ Education + log(GDP.pp)\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -224,6 +231,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Healthy Life Expectancy ~ Education * GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -257,6 +266,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
       cat("\n________________________________________________________________\n\n")
       cat("\nRegression:  Happiness ~ Education\n")
       print(summary(lmout))
+      print(anova(lmout))
+
       if(pause==TRUE){readline("Press enter to continue...")}
       cat("\n________________________________________________________________\n\n")
     }
@@ -290,6 +301,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Happiness ~ Education + GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -322,6 +335,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Happiness ~ Education * GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -355,6 +370,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Happiness ~ Alcohol\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -387,6 +404,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Happiness ~ Alcohol + GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }
@@ -419,6 +438,8 @@ whew1 <- function(do.desc=FALSE,do.hist=TRUE,do.scatter=FALSE,do.corr.life=FALSE
     cat("\n________________________________________________________________\n\n")
     cat("\nRegression:  Happiness ~ Alcohol * GDP.pp\n")
     print(summary(lmout))
+    print(anova(lmout))
+
     if(pause==TRUE){readline("Press enter to continue...")}
     cat("\n________________________________________________________________\n\n")
     }

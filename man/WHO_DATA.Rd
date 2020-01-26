@@ -6,7 +6,7 @@ WHO_DATA
 }
 \description{
 WHO data for life expectancies, by country (2015).  Formatted for use by students in
-CLPS0900 (Quantitative Methods in the Psychological Science).
+CLPS0900 (Quantitative Methods in the Psychological Sciences).
 }
 \usage{data("WHO_DATA")}
 \format{
@@ -22,7 +22,8 @@ A data frame consisting of 192 rows (countries) and 6 variables
 
 }
 \details{
-More info about data set goes here...
+For more information about the data set, see instructions for problem sets
+that use this data set.  
 }
 \source{
 https://www.who.int/gho/mortality_burden_disease/life_tables/en/

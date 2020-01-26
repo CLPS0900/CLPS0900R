@@ -6,7 +6,7 @@ WHR_DATA
 }
 \description{
 WHR data from World Happiness Report 2018. Formatted for use by students in
-CLPS0900 (Quantitative Methods in the Psychological Science).
+CLPS0900 (Quantitative Methods in the Psychological Sciences).
 }
 \usage{data("WHR_DATA")}
 \format{

@@ -4,8 +4,14 @@
 \alias{onesample.ztest}
 \title{One sample NHST with known mu and sigma}
 \usage{
-onesample.ztest(observed.mean = 110, mu = 100, sigma = 15, n = 10,
-  test.type = "2-sided", conf.level = 0.95)
+onesample.ztest(
+  observed.mean = 110,
+  mu = 100,
+  sigma = 15,
+  n = 10,
+  test.type = "2-sided",
+  conf.level = 0.95
+)
 }
 \arguments{
 \item{observed.mean}{A value for the observed sample mean if data not provided.}

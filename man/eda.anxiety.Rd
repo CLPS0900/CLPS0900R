@@ -5,10 +5,16 @@
 \title{Perform two-way anova and related methods using simulated anxiety data.
 Typically called by run_anxiety()}
 \usage{
-eda.anxiety(x = NULL, show.hist = TRUE, show.summary = FALSE,
-  show.anova = FALSE, plot.main.gender = FALSE,
-  plot.main.condition = FALSE, plot.interaction = FALSE,
-  show.tukey = FALSE)
+eda.anxiety(
+  x = NULL,
+  show.hist = TRUE,
+  show.summary = FALSE,
+  show.anova = FALSE,
+  plot.main.gender = FALSE,
+  plot.main.condition = FALSE,
+  plot.interaction = FALSE,
+  show.tukey = FALSE
+)
 }
 \arguments{
 \item{x}{A data frame consisting of gender, condition, and anxiety (DV)}

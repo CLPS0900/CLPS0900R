@@ -5,8 +5,14 @@
 \title{One-sample Students t test, with display of t function and
 areas beyond t observed.}
 \usage{
-one.sample.t(x = rnorm(10), sample.mean = NULL, sample.sd = NULL,
-  n = NULL, mu = 0, test.type = "2-sided")
+one.sample.t(
+  x = rnorm(10),
+  sample.mean = NULL,
+  sample.sd = NULL,
+  n = NULL,
+  mu = 0,
+  test.type = "2-sided"
+)
 }
 \arguments{
 \item{x}{Data to be used}

@@ -4,9 +4,15 @@
 \alias{histnormal}
 \title{Plot a density histogram with a normal distribution superimposed}
 \usage{
-histnormal(x = rnorm(2000), mu = NULL, sigma = NULL,
-  plot.points = FALSE, plot.quantile = FALSE, plot.curve = FALSE,
-  ran.seed = 4)
+histnormal(
+  x = rnorm(2000),
+  mu = NULL,
+  sigma = NULL,
+  plot.points = FALSE,
+  plot.quantile = FALSE,
+  plot.curve = FALSE,
+  ran.seed = 4
+)
 }
 \arguments{
 \item{x}{#The data to be plotted}

@@ -3,7 +3,6 @@
 \docType{package}
 \name{CLPS0900R}
 \alias{CLPS0900R}
-\alias{CLPS0900R-package}
 \title{CLPS0900R: Utilities for Quantitative Methods course.}
 \description{
 The package includes demonstrations in R that are presented in class,

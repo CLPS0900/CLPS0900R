@@ -3,6 +3,7 @@
 export(binomials1)
 export(demo_hist)
 export(demo_nhst)
+export(demo_permutations)
 export(display.tfunction)
 export(eda.anxiety)
 export(eda.whr)

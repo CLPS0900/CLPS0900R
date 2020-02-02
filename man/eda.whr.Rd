@@ -5,11 +5,23 @@
 \title{Perform one-way anova and related methods using WHR_DATA.
 Typically called by run_whr()}
 \usage{
-eda.whr(dv, iv, f1.name, f2.name, add.normal = FALSE,
-  add.qnorm = FALSE, show.aov = FALSE, show.tukey = FALSE,
-  show.barplot = FALSE, conf.level = 0.95, show.boxplots = FALSE,
-  n.int = 10, adj.barlimits = FALSE, show.stats = FALSE,
-  check.sampdist = FALSE)
+eda.whr(
+  dv,
+  iv,
+  f1.name,
+  f2.name,
+  add.normal = FALSE,
+  add.qnorm = FALSE,
+  show.aov = FALSE,
+  show.tukey = FALSE,
+  show.barplot = FALSE,
+  conf.level = 0.95,
+  show.boxplots = FALSE,
+  n.int = 10,
+  adj.barlimits = FALSE,
+  show.stats = FALSE,
+  check.sampdist = FALSE
+)
 }
 \arguments{
 \item{dv}{A continuous quantitative dependent variable}

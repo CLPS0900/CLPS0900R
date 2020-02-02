@@ -4,10 +4,18 @@
 \alias{binomials1}
 \title{Demonstration of binomial distributions}
 \usage{
-binomials1(n = 5, p = 0.5, x.axis.type = "Gaussian",
-  y.axis.type = "Full Range", plot.type = "Counts",
-  add.normal = FALSE, add.values = FALSE, crit.value.c = 1,
-  crit.value.p = 0.5, show.critical = FALSE)
+binomials1(
+  n = 5,
+  p = 0.5,
+  x.axis.type = "Gaussian",
+  y.axis.type = "Full Range",
+  plot.type = "Counts",
+  add.normal = FALSE,
+  add.values = FALSE,
+  crit.value.c = 1,
+  crit.value.p = 0.5,
+  show.critical = FALSE
+)
 }
 \arguments{
 \item{n}{Integer for number of flips}

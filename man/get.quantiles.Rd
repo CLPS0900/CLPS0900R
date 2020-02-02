@@ -4,8 +4,13 @@
 \alias{get.quantiles}
 \title{Get quantiles needed for power analysis}
 \usage{
-get.quantiles(mu = 60, sd = 1, alpha = 0.05, alt.hyp = "mu1<mu0",
-  xlimits = c(54, 64))
+get.quantiles(
+  mu = 60,
+  sd = 1,
+  alpha = 0.05,
+  alt.hyp = "mu1<mu0",
+  xlimits = c(54, 64)
+)
 }
 \arguments{
 \item{mu}{A value for the mean of the distribution}

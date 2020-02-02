@@ -4,8 +4,16 @@
 \alias{power1}
 \title{Perform a power analysis, with plots for null and alternative distributions}
 \usage{
-power1(mu0 = 50, mu1 = 50, sd = 10, n = 100, alpha = 0.05,
-  alt.hyp = "mu1<>mu0", show.values = FALSE, show.means = FALSE)
+power1(
+  mu0 = 50,
+  mu1 = 50,
+  sd = 10,
+  n = 100,
+  alpha = 0.05,
+  alt.hyp = "mu1<>mu0",
+  show.values = FALSE,
+  show.means = FALSE
+)
 }
 \arguments{
 \item{mu0}{A value for the mean under the null hypothesis}

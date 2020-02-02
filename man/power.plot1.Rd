@@ -4,10 +4,19 @@
 \alias{power.plot1}
 \title{Plot the null or alternative sampling distribution for a power analysis}
 \usage{
-power.plot1(mu = 60, sd = 1, xlimits = c(55, 65), plot.type = "Ho",
-  alpha = 0.05, xcors = c(56, 59, 61, 65), alt.hyp = "mu1<mu0",
+power.plot1(
+  mu = 60,
+  sd = 1,
+  xlimits = c(55, 65),
+  plot.type = "Ho",
+  alpha = 0.05,
+  xcors = c(56, 59, 61, 65),
+  alt.hyp = "mu1<mu0",
   shade.colors = c("darkgoldenrod1", "cornsilk", "darkgoldenrod1"),
-  superimpose = FALSE, show.values = FALSE, show.means = FALSE)
+  superimpose = FALSE,
+  show.values = FALSE,
+  show.means = FALSE
+)
 }
 \arguments{
 \item{mu}{A value for the mean of the distribution}

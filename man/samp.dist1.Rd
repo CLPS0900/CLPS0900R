@@ -4,9 +4,16 @@
 \alias{samp.dist1}
 \title{Demonstration of sampling distribution of the mean}
 \usage{
-samp.dist1(ssize = 5, pop.type = "Uniform[1-10]", add.normal = TRUE,
-  custom.data = NULL, show.pop = TRUE, show.flex = TRUE,
-  show.fixed = TRUE, show.qnorm = TRUE)
+samp.dist1(
+  ssize = 5,
+  pop.type = "Uniform[1-10]",
+  add.normal = TRUE,
+  custom.data = NULL,
+  show.pop = TRUE,
+  show.flex = TRUE,
+  show.fixed = TRUE,
+  show.qnorm = TRUE
+)
 }
 \arguments{
 \item{ssize}{An integer for the size of the sample}

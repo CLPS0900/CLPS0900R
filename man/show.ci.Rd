@@ -4,9 +4,18 @@
 \alias{show.ci}
 \title{Plot Confidence Intervals for CLPS0900}
 \usage{
-show.ci(nsamp = 100, ssize = 2, mu = 0, sigma = 1,
-  conf.level = 0.68, do.pause = "None", ci.method = "Sigma known",
-  show.data = FALSE, xaxis.type = "Fixed", go.button = NULL)
+show.ci(
+  nsamp = 100,
+  ssize = 2,
+  mu = 0,
+  sigma = 1,
+  conf.level = 0.68,
+  do.pause = "None",
+  ci.method = "Sigma known",
+  show.data = FALSE,
+  xaxis.type = "Fixed",
+  go.button = NULL
+)
 }
 \arguments{
 \item{nsamp}{Integer for number of samples to display}

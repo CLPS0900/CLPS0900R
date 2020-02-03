@@ -32,7 +32,7 @@ eda.anxiety <- function(x=NULL,show.hist=TRUE,show.summary=FALSE,show.anova=FALS
     if(file.exists("MBSR.data.csv")){
       MBSR_DATA = read.csv("MBSR.data.csv")
       x <- MBSR_DATA
-      assign("MBSR_DATA",x,pos=1)
+      #assign("MBSR_DATA",x,pos=1)
     }
     else {
       stop("\n

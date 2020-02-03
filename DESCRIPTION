@@ -8,7 +8,7 @@ Authors@R:
            email = "clps0900.spring.2020@gmail.com")
 Description: Demonstrations and utilities for use by students in CLPS0900.
 Depends: 
-  R (>= 2.10),
+  R (>= 3.5.0),
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true

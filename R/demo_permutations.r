@@ -2,6 +2,8 @@
 #'
 #' @param population A vector of values to be sampled from
 #' @param sample.size A number (2-10) for the number of observations to be drawn
+#' @param pop.mu A value for population true mean
+#' @param pop.sigma2 A value for population true variance
 #' @param show.summary Controls display of summary statistics (TRUE/FALSE)
 #' @param show.plots Controls whether plots are shown
 #' @param show.details Controls whether permutations are shown
@@ -15,7 +17,8 @@
 #' }
 #' @export
 demo_permutations <- function(population=c(1:3),
-                               sample.size=2,pop.mu=NULL,pop.sigma2=NULL,
+                               sample.size=2,
+                               pop.mu=NULL,pop.sigma2=NULL,
                                show.summary=TRUE,
                                show.plots=TRUE,
                                show.details=TRUE){

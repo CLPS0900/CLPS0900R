@@ -19,6 +19,10 @@ demo_permutations(
 
 \item{sample.size}{A number (2-10) for the number of observations to be drawn}
 
+\item{pop.mu}{A value for population true mean}
+
+\item{pop.sigma2}{A value for population true variance}
+
 \item{show.summary}{Controls display of summary statistics (TRUE/FALSE)}
 
 \item{show.plots}{Controls whether plots are shown}

@@ -5,7 +5,7 @@
 BigFiveData
 }
 \description{
-Self Ratings on the Five Factor Inventory for 50 women and 50 men.Formatted for use by
+Self Ratings on the Five Factor Inventory for 50 women and 50 men. Formatted for use by
 students in CLPS0900 (Quantitative Methods in the Psychological Sciences).
 }
 \usage{data("BigFiveData")}

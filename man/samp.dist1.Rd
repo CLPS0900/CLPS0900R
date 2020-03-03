@@ -5,6 +5,7 @@
 \title{Demonstration of sampling distribution of the mean}
 \usage{
 samp.dist1(
+  population = NULL,
   ssize = 5,
   pop.type = "Uniform[1-10]",
   add.normal = TRUE,
@@ -16,6 +17,8 @@ samp.dist1(
 )
 }
 \arguments{
+\item{population}{An optional numeric vector to be treated as the population}
+
 \item{ssize}{An integer for the size of the sample}
 
 \item{pop.type}{Controls the type of population from which samples are drawn}

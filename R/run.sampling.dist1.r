@@ -1,5 +1,7 @@
 #' Demonstration of sampling distribution of the mean
 #'
+#' @param population An optional numeric vector to be treated as the population
+#'
 #' @return None
 #'
 #' @examples
@@ -8,7 +10,7 @@
 #' }
 #'
 #' @export
-run.sampling.dist1 <- function() {
+run.sampling.dist1 <- function(population=NULL) {
 
   #################################################################
   #manipulate sampling distributions
@@ -17,7 +19,7 @@ run.sampling.dist1 <- function() {
   par(mfrow=c(2,2))
   par(mai=c(.7,.5,.7,.1))
 
-  manipulate(samp.dist1(ssize=ssize,
+  manipulate(samp.dist1(population=population,ssize=ssize,
                         pop.type=pop.type,
                         add.normal=add.normal),
              ssize=slider(1,100,step=1,initial=1,label="Sample Size (N)"),

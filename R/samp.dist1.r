@@ -1,5 +1,6 @@
 #' Demonstration of sampling distribution of the mean
 #'
+#' @param population An optional numeric vector to be treated as the population
 #' @param ssize An integer for the size of the sample
 #' @param pop.type Controls the type of population from which samples are drawn
 #' @param add.normal #controls whether normal distribution is superimposed
@@ -15,7 +16,7 @@
 #' samp.dist1()
 #'
 #' @export
-samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE,custom.data=NULL,
+samp.dist1 <- function(population=NULL,ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE,custom.data=NULL,
                        show.pop=TRUE,show.flex=TRUE,show.fixed=TRUE,show.qnorm=TRUE){
 
   #################################################################
@@ -29,6 +30,8 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE,custom.d
   font.size5 <- 1.25
 
   #define populations
+  #
+  if(is.null(population)){
 
   if(pop.type=="Uniform[1-10]"){
     x <- c(1:10)
@@ -290,6 +293,11 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE,custom.d
     x <- custom.data
   }
 
+  }#is.null
+  else {
+    x <- population
+  }
+
   nsamp <- 2500
   nc <- 20
 
@@ -299,7 +307,11 @@ samp.dist1 <- function(ssize=5,pop.type="Uniform[1-10]",add.normal=TRUE,custom.d
     mu.pop <- round(mean(x,na.rm=TRUE),2)
     sd.pop <- round(sdpop(x),2)
   }
-
+  if(!is.null(population)){
+    mu.pop <- round(mean(x,na.rm=TRUE),2)
+    sd.pop <- round(sdpop(x),2)
+    pop.type <- "empirical"
+  }
 
   ###################################
   #display population

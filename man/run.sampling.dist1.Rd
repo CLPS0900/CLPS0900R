@@ -4,7 +4,10 @@
 \alias{run.sampling.dist1}
 \title{Demonstration of sampling distribution of the mean}
 \usage{
-run.sampling.dist1()
+run.sampling.dist1(population = NULL)
+}
+\arguments{
+\item{population}{An optional numeric vector to be treated as the population}
 }
 \value{
 None

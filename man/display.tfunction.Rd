@@ -7,10 +7,10 @@ Compares t distribution to a normal distribution and shows
 the 'excess' area in the tails of the selected t distribution
 relative to the standard normal distribution.}
 \usage{
-display.tfunction(n = 2, plot.normal = TRUE, add.quantile = TRUE)
+display.tfunction(df = 2, plot.normal = TRUE, add.quantile = TRUE)
 }
 \arguments{
-\item{n}{An integer for sample size.}
+\item{df}{An integer for degrees of freedom.}
 
 \item{plot.normal}{Logical.  Sets whether normal is superimposed.}
 

@@ -15,8 +15,8 @@ run.tdist <- function(){
 
   #illustrate t distribution compared to normal
 
-  manipulate(display.tfunction(n=n,plot.normal=plot.normal,add.quantile=add.quantile),
-             n=slider(2,100,initial=2,label="Sample Size (N)"),
+  manipulate(display.tfunction(df=df,plot.normal=plot.normal,add.quantile=add.quantile),
+             df=slider(2,200,initial=2,label="df"),
              plot.normal=checkbox(label="Display Normal Distribution"),
              add.quantile=checkbox(label="Show Area in Tails"))
 }

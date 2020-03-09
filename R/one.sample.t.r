@@ -14,12 +14,19 @@
 #' one.sample.t(x=rnorm(10),mu=0)
 #'
 #' @export
-one.sample.t <- function(x=rnorm(10),sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0,
+one.sample.t <- function(x=NULL,sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0,
                          test.type="2-sided"){
 
+ #function currently works only when x is a numeric vector
+
  if(is.null(x) & is.null(sample.mean)){
-   stop("You must provided either sample data (x) or sample mean, sd, and N")
+   stop("\nYou must use one of the following formats:
+        Example:  one.sample.t(mydata),mu=0)
+        Example:  one.sample.t(x=c(100,110,90,125),mu=100))
+        Example:  one.sample.t(mean=105,sample.sd=5,n=10,mu=100)
+        The null hypothesis value (mu) must also be provided, as shown.")
  }
+
  xdata <- x
 
  if(!is.null(x)){
@@ -93,11 +100,16 @@ one.sample.t <- function(x=rnorm(10),sample.mean=NULL,sample.sd=NULL,n=NULL,mu=0
 
  }
  else {
-   cat("\nYou t ratio is outside the plot range.  Your test results are shown below.\n")
+   cat("\nYour t ratio is outside the plot range.  Your test results are shown below.\n")
  }
 
- tout <- t.test(x=xdata,mu=mu)
- c.int <- tout$conf.int
+ #tout <- t.test(x=xdata,mu=mu)
+ #c.int <- tout$conf.int
+
+ t.crit <- abs(qt(.025,df=df))
+ c.int.lo <- sample.mean -t.crit*sem
+ c.int.hi <- sample.mean + t.crit*sem
+ c.int <- c(c.int.lo,c.int.hi)
 
  results <- matrix(c(round(sample.mean,2),round(sample.sd,2),n,df,t.obs.r,p.r,mu,c.int[1],c.int[2]))
  dimnames(results)[[1]] <- c("mean","sd","n","df","t","p","mu(Ho)","CI.lower","CI.upper")

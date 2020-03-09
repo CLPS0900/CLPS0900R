@@ -6,7 +6,7 @@
 areas beyond t observed.}
 \usage{
 one.sample.t(
-  x = rnorm(10),
+  x = NULL,
   sample.mean = NULL,
   sample.sd = NULL,
   n = NULL,

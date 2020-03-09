@@ -3,7 +3,7 @@
 #' the 'excess' area in the tails of the selected t distribution
 #' relative to the standard normal distribution.
 #'
-#' @param n An integer for sample size.
+#' @param df An integer for degrees of freedom.
 #' @param plot.normal Logical.  Sets whether normal is superimposed.
 #' @param add.quantile Logical.  Sets whether excess area in tails is displayed.
 #'
@@ -13,14 +13,14 @@
 #' display.tfunction()
 #'
 #' @export
-display.tfunction <- function(n=2,plot.normal=TRUE,add.quantile=TRUE){
+display.tfunction <- function(df=2,plot.normal=TRUE,add.quantile=TRUE){
 
  #show t dist
 
  t.max <- 8
  par(cex=1.25)
  par(mai=c(1,1,1,1))
- df <- n-1
+ #df <- n-1
 
  t.min <- -1*t.max
  x <- seq(t.min,t.max,by=.01)
